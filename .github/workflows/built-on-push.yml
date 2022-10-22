@@ -64,9 +64,9 @@ jobs:
       with:
         servers:  |
           [{
-            "id": "anypoint-exchange-v2",
-            "username": "${{ secrets.ANYPOINT_USERNAME }}",
-            "password": "${{ secrets.ANYPOINT_PASSWORD }}"
+            "id": "MuleRepository",
+            "username": "${{ secrets.MULE_NEXUS_USERNAME}}",
+            "password": "${{ secrets.MULE_NEXUS_PASSWORD}}"
           }]
           
     - name: Deploy to CloudHub
