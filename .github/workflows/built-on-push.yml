@@ -24,6 +24,20 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: add repo creds
+      uses: s4u/maven-settings-action@v2.7.0
+      with:
+        servers:  |
+          [{
+            "id": "MuleRepository",
+            "username": "${{ secrets.mule_nexus_username}}",
+            "password": "${{ secrets.mule_nexus_password}}"
+          },
+          {
+            "id": "anypoint-exchange-v2",
+            "username": "${{ secrets.ANYPOINT_USERNAME }}",
+            "password": "${{ secrets.ANYPOINT_PASSWORD }}"
+          }]
     - name: Build
       run: mvn -B package --file pom.xml
     - name: Stamp artifact file name with commit hash
