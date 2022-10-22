@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-        server-list:
+        server-list:  |
           - server-id: "MuleRepository"
             server-username: "${{ secrets.MULE_NEXUS_USERNAME}}"
             server-password: "${{ secrets.MULE_NEXUS_PASSWORD}}"
