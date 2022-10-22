@@ -25,12 +25,12 @@ jobs:
       with:
         java-version: 1.8
         server-list:  |
-          - server-id: "MuleRepository"
-            server-username: "${{ secrets.MULE_NEXUS_USERNAME}}"
-            server-password: "${{ secrets.MULE_NEXUS_PASSWORD}}"
-          - server-id: "anypoint-exchange-v2"
-            server-username: "${{ secrets.ANYPOINT_USERNAME }}"
-            server-password: "${{ secrets.ANYPOINT_PASSWORD }}"
+          - server-id: MuleRepository
+            server-username: MULE_NEXUS_USERNAME
+            server-password: MULE_NEXUS_PASSWORD
+          - server-id: anypoint-exchange-v2
+            server-username: ANYPOINT_USERNAME
+            server-password: ANYPOINT_PASSWORD
 
     - name: Build
       run: mvn -B package --file pom.xml
