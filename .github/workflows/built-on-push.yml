@@ -65,9 +65,9 @@ jobs:
         servers:  |
           [{
             "id": "MuleRepository",
-            "username": ${{ secrets.MULE_NEXUS_USERNAME}},
-            "password": ${{ secrets.MULE_NEXUS_PASSWORD}}
-          },
+            "username": ${{ secrets.MULE_NEXUS_USERNAME }},
+            "password": ${{ secrets.MULE_NEXUS_PASSWORD }}
+          }
           {
             "id": "anypoint-exchange-v2",
             "username": ${{ secrets.ANYPOINT_USERNAME }},
