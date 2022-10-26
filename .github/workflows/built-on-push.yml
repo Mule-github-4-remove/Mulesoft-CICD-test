@@ -1,4 +1,4 @@
-name: Manual workflow
+name: Mule CICD Demo workflow
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
     branches: [main]
     inputs:
       name:
-        description: 'prod deployment ?'
+        description: 'Confirm to deploy ?'
         default: 'yes'
         required: true
 
@@ -35,20 +35,19 @@ jobs:
           - server-id: anypoint-exchange-v2
             server-username: ${{ secrets.ANYPOINT_USERNAME }}
             server-password: ${{ secrets.ANYPOINT_PASSWORD }}
-
     - name: Build
       run: mvn -B package --file pom.xml
-    - name: Stamp artifact file name with commit hash
+    - name: Stamp Artifact file name with commit hash
       run: |
-        artifactName1=$(ls target/*.jar | head -1)
+        AFFN1=$(ls target/*.jar | head -1)
         commitHash=$(git rev-parse --short "$GITHUB_SHA")
-        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/.$commitHash.jar/g")
-        mv $artifactName1 $artifactName2
+        AFFN2=$(ls target/*.jar | head -1 | sed "s/.jar/.$commitHash.jar/g")
+        mv $AFFN1 $AFFN2
     - uses: actions/upload-artifact@master
       with:
           name: artifacts
           path: target/*.jar
-  deploy:
+  DEV-Deploy:
     needs: build
     runs-on: ubuntu-latest
     environment: dev
@@ -77,4 +76,6 @@ jobs:
     - name: Deploy to CloudHub
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn package deploy -DmuleDeploy -Denvironment=Sandbox1 -Dworker=1 -DworkerType=Micro -Danypoint.username=${{ secrets.ANYPOINT_USERNAME }} -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD }} -Dapp.name=test-hello-world-12345 -Dapp.runtime=4.4.0
+        mvn package deploy -DmuleDeploy -Denvironment=Sandbox -Dworker=1 -DworkerType=Micro -Danypoint.username=${{ secrets.ANYPOINT_USERNAME }} -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD }} -Dapp.name=helloworld32test17 -Dapp.runtime=4.4.0
+   
+ 
