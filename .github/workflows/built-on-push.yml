@@ -85,6 +85,7 @@ jobs:
     - name: Show Response
       run: |
         echo "::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}"
+        ::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}
         echo "TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}" >> $GITHUB_ENV
         echo "::add-mask::$TOKEN_ANYPOINT"
           
