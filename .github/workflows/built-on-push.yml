@@ -91,7 +91,8 @@ jobs:
           
     - name: Deploy to CloudHub
       run: |
-        artifactName=$(ls *.jar | head -1)
-        mvn package deploy -DmuleDeploy -Denvironment=Sandbox -Dworker=1 -DworkerType=Micro -Danypoint.username=${{ secrets.ANYPOINT_USERNAME }} -Danypoint.password=${{ secrets.ANYPOINT_PASSWORD }} -Dapp.name=helloworld32test17 -Dapp.runtime=4.4.0
+        artifactName=$(ls *.jar | head -1)        
+        mvn package deploy -DmuleDeploy -DauthToken=$TOKEN_ANYPOINT -Denvironment=Sandbox -Dworker=1 -DworkerType=Micro -Dapp.name=helloworld32test17 -Dapp.runtime=4.4.0
+
    
  
