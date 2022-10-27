@@ -81,20 +81,11 @@ jobs:
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json"}'
         data: '{"client_id":"${{ secrets.ANYPOINT_CLIENT_ID}}","client_secret": "${{ secrets.ANYPOINT_CLIENT_SECRET}}","grant_type": "client_credentials"}'
-        
-    - name: save-secret
-      uses: Skandalik/save-secret@v1.0.1
-      with:
-        # GitHub token used for creating/updating secret. Must have write admin rights.
-        github_token: ${{ github.token }}
-        # Repository name with owner e.g "octocat/hello-world".
-        repository: ${{ github.repository }}
-        # Name of the secret to be kept in the repository secrets.
-        secret_name: TEMP_TOKEN
-        secret_value: ${{ fromJson(steps.myRequest.outputs.response).access_token }}
 
     - run: |
-        echo "TOKEN_ANYPOINT=${{ secrets.TEMP_TOKEN }}" >> $GITHUB_ENV
+        echo "secrets['fromJson(steps.myRequest.outputs.response).access_token']"
+        echo "secrets[fromJson(steps.myRequest.outputs.response).access_token]"
+        echo "TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}" >> $GITHUB_ENV
         echo "::add-mask::$TOKEN_ANYPOINT"
           
     - name: Deploy to CloudHub
