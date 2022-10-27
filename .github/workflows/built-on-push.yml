@@ -84,12 +84,13 @@ jobs:
         data: '{"client_id":"${{ secrets.ANYPOINT_CLIENT_ID}}","client_secret": "${{ secrets.ANYPOINT_CLIENT_SECRET}}","grant_type": "client_credentials"}'
     - name: Show Response
       run: |
+        echo "::add-mask::$TOKEN_ANYPOINT"
         echo "TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}" >> $GITHUB_ENV
           
     - name: Deploy to CloudHub
       run: |
         artifactName=$(ls *.jar | head -1)        
-        mvn package deploy -DmuleDeploy -DauthToken=::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }} -Denvironment=Sandbox -Dworker=1 -DworkerType=Micro -Dapp.name=helloworld32test17 -Dapp.runtime=4.4.0
+        mvn package deploy -DmuleDeploy -DauthToken=$TOKEN_ANYPOINT -Denvironment=Sandbox -Dworker=1 -DworkerType=Micro -Dapp.name=helloworld32test17 -Dapp.runtime=4.4.0
 
    
  
