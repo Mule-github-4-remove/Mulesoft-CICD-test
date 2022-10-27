@@ -85,7 +85,7 @@ jobs:
 
     - name: show access token
       run: |
-          RESP=curl --location --request POST 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token' --header 'Content-Type: application/json' --data-raw '{   "client_id":"a574560e7afa49128d5c5273214c87a6",   "client_secret": "d49547a5e0EA4b45bF15493846B5b3D2",   "grant_type": "client_credentials"}'
+          RESP=curl -X POST  -H "Content-Type:application/json" --data-raw '{"client_id":"a574560e7afa49128d5c5273214c87a6","client_secret":"d49547a5e0EA4b45bF15493846B5b3D2","grant_type":"client_credentials"}' https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token
           echo '$RESP'
           echo '::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}'
     - name: test
