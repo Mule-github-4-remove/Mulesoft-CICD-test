@@ -82,31 +82,11 @@ jobs:
         customHeaders: '{"Content-Type": "application/json"}'
         data: '{"client_id":"${{ secrets.ANYPOINT_CLIENT_ID}}","client_secret": "${{ secrets.ANYPOINT_CLIENT_SECRET}}","grant_type": "client_credentials"}'
 
-    - name: Create A File
-      # You may pin to the exact commit or the version.
-      # uses: 1arp/create-a-file-action@ee80edaa4741d9997dbe053e052329d4070c020c
-      uses: 1arp/create-a-file-action@0.2
-      with:
-        # Path from cwd where file is to be created
-        path: /.github/workflows/
-        file: abc.json
-        # The content of the file
-        content: ${{ steps.myRequest.outputs.response }}
-
-    - name: JSON to environment variables
-        # You may pin to the exact commit or the version.
-        # uses: rgarcia-phi/json-to-variables@9835d537368468c4e4de5254dc3efeadda183793
-      uses: rgarcia-phi/json-to-variables@v1.1.0
-      with:
-        # The json file.
-        filename: /.github/workflows/abc.json
-        # The prefix for variables.
-#         prefix: # optional, default is json
-        # Mask variables as secrets.
-        masked: true
 
     - name: show access token
       run: |
+          RESP=curl --location --request POST 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token' --header 'Content-Type: application/json' --data-raw '{   "client_id":"a574560e7afa49128d5c5273214c87a6",   "client_secret": "d49547a5e0EA4b45bF15493846B5b3D2",   "grant_type": "client_credentials"}'
+          echo '$RESP'
           echo '::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}'
     - name: test
       run: |
