@@ -84,10 +84,10 @@ jobs:
         data: '{"client_id":"${{ secrets.ANYPOINT_CLIENT_ID}}","client_secret": "${{ secrets.ANYPOINT_CLIENT_SECRET}}","grant_type": "client_credentials"}'
     - name: Show Response
       env:
-        TEMP: "::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}"
+        TEMP: "${{ fromJson(steps.myRequest.outputs.response).access_token }}"
       run: |
-        echo "$TEMP"
-        echo "TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}" >> $GITHUB_ENV
+        echo "::add-mask::$TEMP"
+        echo "TOKEN_ANYPOINT=$TEMP" >> $GITHUB_ENV
         echo "::add-mask::$TOKEN_ANYPOINT"
           
     - name: Deploy to CloudHub
