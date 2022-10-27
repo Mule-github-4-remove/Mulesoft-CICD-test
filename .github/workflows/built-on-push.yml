@@ -84,9 +84,10 @@ jobs:
 
 
     - name: show access token
-      with: |
-        inlineScript: |
-          ABC=${{ fromJson(steps.myRequest.outputs.response).access_token }}
+      run: |
+          ABC=::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}
+    - name: test
+      run: |
           echo ::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}
           echo "TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}" >> $GITHUB_ENV
           echo "::add-mask::$TOKEN_ANYPOINT"
