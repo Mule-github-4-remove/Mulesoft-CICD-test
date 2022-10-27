@@ -85,7 +85,8 @@ jobs:
       
     - id: sets-a-secret
       run: |
-        the_secret=fromJson(steps.myRequest.outputs.response).access_token
+        the_secret=${{ fromJson(steps.myRequest.outputs.response).access_token }}
+        a=(fromJson(steps.myRequest.outputs.response).access_token)
         echo "::add-mask::$the_secret"
         echo "::set-output name=secret-number::$the_secret"
     - run: |
