@@ -83,12 +83,9 @@ jobs:
         customHeaders: '{"Content-Type": "application/json"}'
         data: '{"client_id":"${{ secrets.ANYPOINT_CLIENT_ID}}","client_secret": "${{ secrets.ANYPOINT_CLIENT_SECRET}}","grant_type": "client_credentials"}'
     - name: Show Response
-      env:
-        TEMP: "::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}"
       run: |
-        echo "::add-mask::$TEMP"
-        echo "::add-mask::$TOKEN_ANYPOINT"
-        echo "TOKEN_ANYPOINT=$TEMP" >> $GITHUB_ENV
+        echo "::set-output name=my-secret, add-mask=true::${{ fromJson(steps.myRequest.outputs.response).access_token }}"
+        echo "TOKEN_ANYPOINT=$my-secret" >> $GITHUB_ENV
         echo "::add-mask::$TOKEN_ANYPOINT"
           
     - name: Deploy to CloudHub
