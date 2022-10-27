@@ -73,6 +73,21 @@ jobs:
             "password": "${{ secrets.MULE_NEXUS_PASSWORD}}"
           }]
           
+          
+    - name: Get Access Token
+      id: myRequest
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://anypoint.mulesoft.com/accounts/api/v2/oauth2/token'
+        method: 'POST'
+        customHeaders: '{"Content-Type": "application/json"}'
+        data: '{"client_id":"a574560e7afa49128d5c5273214c87a6","client_secret": "d49547a5e0EA4b45bF15493846B5b3D2","grant_type": "client_credentials"}'
+    - name: Show Response
+      run: |
+        echo ${{ steps.myRequest.outputs.response }}
+        echo ${{ steps.myRequest.outputs.headers }}
+        echo ${{ fromJson(steps.myRequest.outputs.response).access_token }}
+          
     - name: Deploy to CloudHub
       run: |
         artifactName=$(ls *.jar | head -1)
