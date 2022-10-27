@@ -82,16 +82,9 @@ jobs:
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json"}'
         data: '{"client_id":"${{ secrets.ANYPOINT_CLIENT_ID}}","client_secret": "${{ secrets.ANYPOINT_CLIENT_SECRET}}","grant_type": "client_credentials"}'
-      
-    - id: sets-a-secret
-      run: |
-        the_secret=${{ fromJson(steps.myRequest.outputs.response).access_token }}
-        a=(fromJson(steps.myRequest.outputs.response).access_token)
-        echo "::add-mask::$the_secret"
-        echo "::set-output name=secret-number::$the_secret"
     - run: |
-          echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
-    - run: |
+        MY_NAME="Mona The Octocat"
+        echo "::add-mask::$MY_NAME"
         echo "TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}" >> $GITHUB_ENV
         echo "::add-mask::$TOKEN_ANYPOINT"
           
