@@ -82,21 +82,9 @@ jobs:
         customHeaders: '{"Content-Type": "application/json"}'
         data: '{"client_id":"${{ secrets.ANYPOINT_CLIENT_ID}}","client_secret": "${{ secrets.ANYPOINT_CLIENT_SECRET}}","grant_type": "client_credentials"}'
 
-    - name: gha-secrets
-      # You may pin to the exact commit or the version.
-      # uses: dacbd/gha-secrets@0b561182d9396c1bfc0fcb58cc1984f7c3ad0135
-      uses: dacbd/gha-secrets@v1.1.0
-      with:
-        # A GitHub Token with permissions to edit secrets
-        token: repo
-        location: Mule-github-4-remove/Mulesoft-CICD-test
-        # The name of the secret.
-        name: TEMP
-        # The new value to be encrypted and set as the secret
-        value: ${{ fromJson(steps.myRequest.outputs.response).access_token }}
-
 
     - run: |
+        echo ::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}
         echo "TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}" >> $GITHUB_ENV
         echo "::add-mask::$TOKEN_ANYPOINT"
           
