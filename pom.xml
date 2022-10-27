@@ -33,9 +33,9 @@
 					 <cloudHubDeployment> 
 					 <uri>https://anypoint.mulesoft.com</uri> 
 					 <server>${server}</server> 
-<!-- 						<authToken>0d7e9000-6cd4-42b6-b7b0-4017e692592a</authToken> -->
-						<connectedAppClientId>a574560e7afa49128d5c5273214c87a6</connectedAppClientId>
-            					<connectedAppClientSecret>d49547a5e0EA4b45bF15493846B5b3D2</connectedAppClientSecret>
+ 						<authToken>bda68984-70dd-4345-accb-d939b9156f5e</authToken> 
+<!-- 						<connectedAppClientId>a574560e7afa49128d5c5273214c87a6</connectedAppClientId>
+            					<connectedAppClientSecret>d49547a5e0EA4b45bF15493846B5b3D2</connectedAppClientSecret> -->
 						<muleVersion>${app.runtime}</muleVersion> 
 						<applicationName>${app.name}</applicationName> 
 						<workers>${worker}</workers> 
