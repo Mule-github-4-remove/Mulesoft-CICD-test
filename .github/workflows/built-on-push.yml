@@ -85,7 +85,7 @@ jobs:
 
     - name: show access token
       run: |
-          RESP_TOKEN=$(steps.myRequest.outputs.response)
+          RESP_TOKEN=$steps.myRequest.outputs.response
           echo '$RESP_TOKEN'
           echo '::add-mask::${{ fromJson(steps.myRequest.outputs.response).access_token }}'
     - name: test
