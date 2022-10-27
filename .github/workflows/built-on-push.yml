@@ -83,8 +83,8 @@ jobs:
         customHeaders: '{"Content-Type": "application/json"}'
         data: '{"client_id":"${{ secrets.ANYPOINT_CLIENT_ID}}","client_secret": "${{ secrets.ANYPOINT_CLIENT_SECRET}}","grant_type": "client_credentials"}'
     - run: |
-        MY_NAME="Mona The Octocat"
-        echo "::add-mask::$MY_NAME"
+        TOKEN_ANYPOINT=fdfs
+        echo "::add-mask::$TOKEN_ANYPOINT"
         echo "TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}" >> $GITHUB_ENV
         echo "::add-mask::$TOKEN_ANYPOINT"
           
