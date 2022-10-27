@@ -84,7 +84,7 @@ jobs:
         data: '{"client_id":"${{ secrets.ANYPOINT_CLIENT_ID}}","client_secret": "${{ secrets.ANYPOINT_CLIENT_SECRET}}","grant_type": "client_credentials"}'
     - name: Show Response
       run: |
-        TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}
+       echo "TOKEN_ANYPOINT=${{ fromJson(steps.myRequest.outputs.response).access_token }}" >> $GITHUB_ENV
           
     - name: Deploy to CloudHub
       run: |
