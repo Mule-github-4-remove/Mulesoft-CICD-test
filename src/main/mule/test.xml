@@ -5,7 +5,7 @@
     </http:listener-config>
     <apikit:config name="test-config" api="test.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <flow name="test-main">
-        <http:listener config-ref="test-httpListenerConfig" path="/api/*">
+        <http:listener config-ref="test-httpListenerConfig" path="/api/v1/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
             </http:response>
