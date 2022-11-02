@@ -36,6 +36,7 @@
  						<authToken>${authToken}</authToken> 
 <!-- 						<connectedAppClientId>a574560e7afa49128d5c5273214c87a6</connectedAppClientId>
             					<connectedAppClientSecret>d49547a5e0EA4b45bF15493846B5b3D2</connectedAppClientSecret> -->
+						<businessGroupId>a67b911b-4303-44b3-9f76-ec27b2cb9e75</businessGroupId>
 						<muleVersion>${app.runtime}</muleVersion> 
 						<applicationName>${app.name}</applicationName> 
 						<workers>${worker}</workers> 
