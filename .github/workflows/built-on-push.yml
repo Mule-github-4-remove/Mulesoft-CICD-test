@@ -101,8 +101,9 @@ jobs:
         file2=$commitHash.jar
         mv $file1 $file2
         artifactName=$file2
-        
-        mvn package deploy -DmuleDeploy -DauthToken=$TOKEN_ANYPOINT -Denvironment=Sandbox -Dworker=1 -DworkerType=Micro -Dapp.name=helloworld32test17sa -Dapp.runtime=4.4.0
+        mvn package deploy -DmuleDeploy -DauthToken=$TOKEN_ANYPOINT
+
+        #mvn package deploy -DmuleDeploy -DauthToken=$TOKEN_ANYPOINT -Denvironment=Sandbox -Dworker=1 -DworkerType=Micro -Dapp.name=helloworld32test17sa -Dapp.runtime=4.4.0
 
    
  
