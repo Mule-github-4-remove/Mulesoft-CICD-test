@@ -43,6 +43,9 @@
 						<workerType>${workerType}</workerType>
 						<environment>${environment}</environment>
 						<objectStoreV2>true</objectStoreV2>
+						<properties>
+							<env>${env}</env>
+						</properties>
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
 				</configuration>
