@@ -30,20 +30,21 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					 <cloudHubDeployment> 
-					 <uri>https://anypoint.mulesoft.com</uri> 
-					 <server>${server}</server> 
- 						<authToken>${authToken}</authToken> 
-<!-- 						<connectedAppClientId>a574560e7afa49128d5c5273214c87a6</connectedAppClientId>
-            					<connectedAppClientSecret>d49547a5e0EA4b45bF15493846B5b3D2</connectedAppClientSecret> -->
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<server>${server}</server>
+						<authToken>${authToken}</authToken>
+						<!-- 						<connectedAppClientId>a574560e7afa49128d5c5273214c87a6</connectedAppClientId>
+								<connectedAppClientSecret>d49547a5e0EA4b45bF15493846B5b3D2</connectedAppClientSecret> -->
 						<businessGroupId>73c46cbe-50be-4e61-98f6-bb46c0152d10</businessGroupId>
-						<muleVersion>${app.runtime}</muleVersion> 
-						<applicationName>${app.name}</applicationName> 
-						<workers>${worker}</workers> 
-						<workerType>${workerType}</workerType> 
-						<environment>${environment}</environment> 
-						<objectStoreV2>true</objectStoreV2> 
-					</cloudHubDeployment> 
+						<muleVersion>${app.runtime}</muleVersion>
+						<applicationName>${app.name}</applicationName>
+						<workers>${worker}</workers>
+						<workerType>${workerType}</workerType>
+						<environment>${environment}</environment>
+						<objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>
+					<classifier>mule-application</classifier>
 				</configuration>
 			</plugin>
 		</plugins>
