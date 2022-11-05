@@ -101,6 +101,11 @@ jobs:
         file2=$commitHash.jar
         mv $file1 $file2
         artifactName=$file2
+        environment=Sandbox
+        worker=1
+        workerType=Micro
+        appname=helloworld32test17sa
+        appruntime=4.4.0
         mvn package deploy -DmuleDeploy -DauthToken=$TOKEN_ANYPOINT -Denvironment=${environment} -Dworker=${worker} -DworkerType=${workerType} -Dapp.name=${appname} -Dapp.runtime=${appruntime}
 
         #mvn package deploy -DmuleDeploy -DauthToken=$TOKEN_ANYPOINT -Denvironment=Sandbox -Dworker=1 -DworkerType=Micro -Dapp.name=helloworld32test17sa -Dapp.runtime=4.4.0
