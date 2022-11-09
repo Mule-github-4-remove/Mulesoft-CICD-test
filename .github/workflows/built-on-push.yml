@@ -21,7 +21,7 @@ jobs:
     
     - name: Set Variable from file
       run: |
-        json_variable=jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' abc.json
+        jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' abc.json
         echo $json_variable
         echo $ABC_VARIABLE
         echo $ABC_VARIABLE1	
