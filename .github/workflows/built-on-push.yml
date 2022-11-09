@@ -18,14 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set Variable from file
-      uses: deep-mm/set-variables@v1.0
-      with:
-        variableFileName: abc.json
-        
-    - name: Stamp Artifact file name with commit hash
       run: |
-        echo $ABC_VARIABLE
-        echo $ABC_VARIABLE1
+        ls
         
     
     - uses: actions/checkout@v2
