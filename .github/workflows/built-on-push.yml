@@ -18,23 +18,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:    
     - uses: actions/checkout@v2
-    - name: Set Variable from file
-      uses: deep-mm/set-variables@v1.0
-      with:
-        variableFileName: abc
     
     - name: cat file
       run: |
           pwd
-          variablePath='/home/runner/work/Mulesoft-CICD-test/Mulesoft-CICD-test/abc.json'
-          while read variable; do
-              key=$(jq -r '.name' <<< $variable)
-              value=$(jq -r '.value' <<< $variable)
-              echo $key
-              echo $value
-              echo "$key=$value" >> $GITHUB_ENV
-          done <<< $(jq -c '.variables[]' $variablePath)
-
+          cp abc.json .github/variables/abc.json
+    - name: Set Variable from file
+      uses: deep-mm/set-variables@v1.0
+      with:
+        variableFileName: abc
         
     - name: Stamp Artifact file name with commit hash
       run: |
