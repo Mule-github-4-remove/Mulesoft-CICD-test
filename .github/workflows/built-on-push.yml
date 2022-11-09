@@ -19,10 +19,6 @@ jobs:
     steps:    
     - uses: actions/checkout@v2
     
-    - name: cat file
-      run: |
-          pwd
-          cp abc.json /.github/variables/abc.json
     - name: Set Variable from file
       uses: deep-mm/set-variables@v1.0
       with:
