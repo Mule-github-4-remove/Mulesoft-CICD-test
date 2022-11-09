@@ -23,6 +23,7 @@ jobs:
       run: |
         for s in $(echo $values | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
             export $s
+            echo $s
         done   
         echo $ABC_VARIABLE
         echo $ABC_VARIABLE1	
