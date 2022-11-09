@@ -24,10 +24,9 @@ jobs:
       with:
         # The script to run
         script:  |
-          for s in $(echo $values | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' .github/variables/abc.json ); do
-            export $s
-            echo $s
-          done
+          json_variable= $(echo $values | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' .github/variables/abc.json )
+          echo $json_variable
+          
           
     - name: Stamp Artifact file name with commit hash
       run: |
