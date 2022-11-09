@@ -18,9 +18,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:    
     - uses: actions/checkout@v2
-    - name: Set Variable from file
+    - name: cat file
       run: |
         ls
+        cat abc.json
+        pwd
+        
+    - name: Set Variable from file
+      uses: deep-mm/set-variables@v1.0
+      with:
+        variableFileName: abc
+        
+    - name: Stamp Artifact file name with commit hash
+      run: |
+        echo $ABC_VARIABLE
+        echo $ABC_VARIABLE1	
+        
     - uses: actions/cache@v1
       with:
         path: ~/.m2/repository
