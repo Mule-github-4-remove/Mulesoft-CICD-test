@@ -20,14 +20,12 @@ jobs:
     - uses: actions/checkout@v2
     - name: cat file
       run: |
-        ls
-        cat abc.json
-        pwd
+         pwd
         
     - name: Set Variable from file
       uses: deep-mm/set-variables@v1.0
       with:
-        variableFileName: abc
+        variableFileName: /home/runner/work/Mulesoft-CICD-test/Mulesoft-CICD-test/abc
         
     - name: Stamp Artifact file name with commit hash
       run: |
