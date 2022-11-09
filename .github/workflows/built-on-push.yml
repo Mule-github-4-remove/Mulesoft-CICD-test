@@ -21,10 +21,9 @@ jobs:
     
     - name: Set Variable from file
       run: |
-        jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' .github/variables/abc.json
-        echo $json_variable
-        echo $ABC_VARIABLE
-        echo $ABC_VARIABLE1	
+        for s in $(echo $values | jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' .github/variables/abc.json ); do
+          export $s
+        done
     - name: Stamp Artifact file name with commit hash
       run: |
         echo $ABC_VARIABLE
