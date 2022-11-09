@@ -23,7 +23,9 @@ jobs:
       run: |
         for s in $(echo $values | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" ); do
             export $s
-        done        
+        done   
+        echo $ABC_VARIABLE
+        echo $ABC_VARIABLE1	
     - name: Stamp Artifact file name with commit hash
       run: |
         echo $ABC_VARIABLE
