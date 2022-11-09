@@ -24,7 +24,7 @@ jobs:
       with:
         # The script to run
         script:  |
-          json_variable= $(echo jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' .github/variables/abc.json )
+          json_variable= $(echo $values | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" .github/variables/abc.json )
           echo $json_variable
           
           
