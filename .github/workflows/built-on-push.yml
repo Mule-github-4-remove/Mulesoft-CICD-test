@@ -18,6 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:    
     - uses: actions/checkout@v2
+    - name: Set Variable from file
+      uses: deep-mm/set-variables@v1.0
+      with:
+        variableFileName: abc
+    
     - name: cat file
       run: |
           pwd
